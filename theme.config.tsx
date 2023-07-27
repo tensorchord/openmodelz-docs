@@ -7,8 +7,8 @@ const config: DocsThemeConfig = {
   head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="ModelZ" />      
-      <meta property="og:description" content="Deploy your machine learning models effortlessly on a pay-as-you-go serverless infrastructure." />      
+      <meta property="og:title" content="OpenModelZ" />      
+      <meta property="og:description" content="Simplify machine learning deployment for any cloud (GCP, AWS, or others), your home lab, or even a single machine." />      
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     </>
   ),
