@@ -1,0 +1,34 @@
+{
+  "index": "Introduction",
+  "deployment": "Manage Deployments",
+  "server": "Manage Servers",
+  "architecture": "Architecture",
+  "-- FAQ": {
+    "type": "separator",
+    "title": "FAQ"
+  },
+  "why": "Why Use This?",
+  "comparison": "OpenModelZ vs. Others",
+  "-- Integration": {
+    "type": "separator",
+    "title": "Integration"
+  },
+  "cli-reference": "CLI Reference",
+  "-- About": {
+    "type": "separator",
+    "title": "About"
+  },
+  "community": "Community & Support",
+  "home": {
+    "title": "GitHub ↗",
+    "type": "page",
+    "href": "https://github.com/tensorchord/openmodelz",
+    "newWindow": true
+  },
+  "cloud": {
+    "title": "Managed Service ↗",
+    "type": "page",
+    "href": "https://modelz.ai",
+    "newWindow": true
+  }
+}

@@ -1,0 +1,104 @@
+# Start the First Server
+
+A server is a machine that could run the deployments. It could be a cloud VM, a PC, or even a Raspberry Pi. You could start from a single server and scale it up to a cluster of machines without any hassle.
+
+This page will show you how to start the first server.
+
+## Hardware prerequisites
+
+Hardware requirements scale based on the size of your deployments. Minimum recommendations are outlined here.
+
+- 2 vCPUs
+- 4 GB RAM
+
+## Start the server on Linux
+
+You could get the help message of the `mdz server start` command by running `mdz server start -h`.
+
+```
+$ mdz server start -h
+Start the server with the public IP of the machine. If not provided, the internal IP will be used automatically.
+
+Usage:
+  mdz server start [flags]
+
+Examples:
+  mdz server start
+  mdz server start -v
+  mdz server start 1.2.3.4
+
+Flags:
+  -h, --help   help for start
+
+Global Flags:
+      --debug                       Enable debug logging
+  -u, --url string                  URL to use for the server (MDZ_URL) (default http://localhost:80)
+  -v, --verbose                     Verbose output
+```
+
+You could start the server by running `mdz server start`. The internal IP address will be used as the default endpoint of your deployments. 
+
+You could provide the public IP address of your server to the `mdz server start` command to make it accessible from the outside world.
+
+```bash
+# Provide the public IP as an argument
+$ mdz server start 1.2.3.4
+$ mdz server start
+🚧 Initializing the server...
+🚧 Waiting for the server to be ready...
+🐋 Checking if the server is running...
+Agent:
+ Version:       v0.0.5
+ Build Date:    2023-07-19T09:12:55Z
+ Git Commit:    84d0171640453e9272f78a63e621392e93ef6bbb
+ Git State:     clean
+ Go Version:    go1.19.10
+ Compiler:      gc
+ Platform:      linux/amd64
+🐳 The server is running at http://1.2.3.4.nip.io
+🎉 You could set the environment variable to get started!
+
+export MDZ_AGENT=http://1.2.3.4.nip.io
+```
+
+## Start the server on macOS or Windows
+
+You need to create a linux VM first, with multipass for example.
+
+```bash
+$ multipass launch
+$ multipass shell
+$ mdz server start
+```
+
+Please notice that [OrbStack](https://orbstack.dev/) and other Rosetta emulation-based solutions on macOS are not supported.
+
+## Check the status of the server
+
+You could check the status of the server by running `mdz server list`.
+
+```
+ NAME   PHASE  ALLOCATABLE      CAPACITY        
+ node1  Ready  cpu: 16          cpu: 16         
+               mem: 32784748Ki  mem: 32784748Ki 
+```
+
+## Label your servers
+
+You could label your servers to deploy your models to specific servers. For example, you could label your servers with `gpu=true` and deploy your models to servers with GPUs.
+
+```
+$ mdz server label node1 gpu=true type=nvidia-a100
+$ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80 --node-labels gpu=true,type=nvidia-a100
+```
+
+## Next steps
+
+import { Card, Cards } from 'nextra-theme-docs'
+
+<Cards>
+  <Card icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+</svg>
+} title="Join a new server" href="/server/join"/>
+</Cards>

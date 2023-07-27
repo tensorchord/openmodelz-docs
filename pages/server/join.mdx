@@ -1,0 +1,15 @@
+# Add More Servers
+
+You could join a new server to the cluster by running `mdz server join` on the new server if you want to add more servers to your cluster.
+
+You could provide the internal IP address of the first server to the `mdz server join` command.
+
+```
+$ mdz server join <internal-ip-of-the-first-server>
+$ mdz server list
+ NAME   PHASE  ALLOCATABLE      CAPACITY        
+ node1  Ready  cpu: 16          cpu: 16         
+               mem: 32784748Ki  mem: 32784748Ki 
+ node2  Ready  cpu: 16          cpu: 16         
+               mem: 32784748Ki  mem: 32784748Ki 
+```

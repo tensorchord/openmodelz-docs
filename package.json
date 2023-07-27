@@ -1,0 +1,36 @@
+{
+  "name": "openmodelz-docs",
+  "version": "0.0.1",
+  "description": "Simplify machine learning deployment for any environment",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "next-sitemap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tensorchord/openmodelz-docs.git"
+  },
+  "author": "openmodelz Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tensorchord/openmodelz-docs/issues"
+  },
+  "homepage": "https://github.com/tensorchord/openmodelz",
+  "dependencies": {
+    "next": "^13.0.6",
+    "next-sitemap": "^4.1.3",
+    "nextjs-google-analytics": "^2.3.3",
+    "nextra": "^2.7.1",
+    "nextra-theme-docs": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "@types/react": "^18.0.28",
+    "typescript": "^4.9.3"
+  }
+}

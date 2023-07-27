@@ -1,0 +1,27 @@
+# Make Predictions
+
+You could just visit the endpoint (`http://skilled-slug-crxm19s3602d1zlg.192.168.71.93.nip.io` in this case) if you are using Gradio, streamlit or other web UI-based inference servers.
+
+```
+$ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80
+Inference simple-server is created
+$ mdz list
+ NAME          ENDPOINT                                                   STATUS  INVOCATIONS  REPLICAS 
+ skilled-slug  http://skilled-slug-crxm19s3602d1zlg.192.168.71.93.nip.io  Ready           181  2/2      
+               http://localhost:80/inference/skilled-slug.default          
+```
+
+You could also use the endpoint to send RESTful or websocket requests to the deployment.
+
+```
+$ curl http://skilled-slug-crxm19s3602d1zlg.192.168.71.93.nip.io
+```
+
+You could get the total number of requests in `mdz list` command.
+
+```
+$ mdz list
+ NAME          ENDPOINT                                                   STATUS  INVOCATIONS  REPLICAS 
+ skilled-slug  http://skilled-slug-crxm19s3602d1zlg.192.168.71.93.nip.io  Ready           182  2/2      
+               http://localhost:80/inference/skilled-slug.default                                                             
+```
