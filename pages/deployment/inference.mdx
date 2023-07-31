@@ -1,27 +1,29 @@
 # Make Predictions
 
-You could just visit the endpoint (`http://simple-server-crxm19s3602d1zlg.192.168.71.93.nip.io` in this case) if you are using Gradio, streamlit or other web UI-based inference servers.
+You could just visit the endpoint (`http://simple-server-4k2epq5lynxbaayn.192.168.71.93.modelz.live` in this case) if you are using Gradio, streamlit or other web UI-based inference servers.
 
 ```
 $ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80
 Inference simple-server is created
 $ mdz list
- NAME          ENDPOINT                                                   STATUS  INVOCATIONS  REPLICAS 
- simple-server  http://simple-server-crxm19s3602d1zlg.192.168.71.93.nip.io  Ready           181  2/2      
-               http://localhost:80/inference/simple-server.default          
+ NAME           ENDPOINT                                                          STATUS  INVOCATIONS  REPLICAS 
+ simple-server  http://simple-server-4k2epq5lynxbaayn.192.168.71.93.modelz.live   Ready             2  1/1      
+                http://192.168.71.93.modelz.live/inference/simple-server.default                                 
 ```
 
 You could also use the endpoint to send RESTful or websocket requests to the deployment.
 
 ```
-$ curl http://simple-server-crxm19s3602d1zlg.192.168.71.93.nip.io
+$ curl http://simple-server-4k2epq5lynxbaayn.192.168.71.93.modelz.live
 ```
 
 You could get the total number of requests in `mdz list` command.
 
 ```
+$ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80
+Inference simple-server is created
 $ mdz list
- NAME          ENDPOINT                                                   STATUS  INVOCATIONS  REPLICAS 
- simple-server  http://simple-server-crxm19s3602d1zlg.192.168.71.93.nip.io  Ready           182  2/2      
-               http://localhost:80/inference/simple-server.default                                                             
+ NAME           ENDPOINT                                                          STATUS  INVOCATIONS  REPLICAS 
+ simple-server  http://simple-server-4k2epq5lynxbaayn.192.168.71.93.modelz.live   Ready             3  1/1      
+                http://192.168.71.93.modelz.live/inference/simple-server.default                                 
 ```
