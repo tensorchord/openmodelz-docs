@@ -13,6 +13,7 @@ Examples:
   mdz deploy --image=modelzai/llm-blomdz-560m:23.06.13 --name blomdz-560m --node-labels gpu=true,name=node-name
 
 Flags:
+      --gpu int               Number of GPUs
   -h, --help                  help for deploy
       --image string          Image to deploy
       --max-replicas int32    Maximum number of replicas (default 1)
@@ -27,6 +28,8 @@ Global Flags:
 ```
 
 You could deploy a model by running `mdz deploy --image <image>`. The deployment will be accessible from the outside world by default.
+
+If your service requires GPUs, you can add the `--gpu 1` flag to indicate how many GPUs you need. The deployment will be scheduled to a GPU node. if you have different type of GPUs, you can label your nodes with `mdz server label node3 gpu=true type=nvidia-a100` and deploy the serevice to the selected nodes with `mdz deploy --image llama2 --node-labels gpu=true,type=nvidia-a100`.
 
 ```
 $ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80
