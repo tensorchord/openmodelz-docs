@@ -45,7 +45,22 @@ You could access the deployment by visiting the endpoint URL. It will be `http:/
 import { Callout } from 'nextra/components'
  
 <Callout type="info" emoji="⚠️">
-  This requires the Nvidia Toolkit to be installed on the host machine before you run `mdz server start`. Check out the [Nvidia Toolkit installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for more information.
+  This requires the Nvidia Driver to be installed on the host machine before you run `mdz server start`. Check out the [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx) for more information.
+
+  If you are using the GPU VM from cloud providers, the driver should be installed already.
+
+  For OS before Ubuntu 22.04, you might need to run the following command to make sure the GPU operator is working properly.
+
+  ```bash
+  sysctl -w fs.inotify.max_user_watches=100000 
+  sysctl -w fs.inotify.max_user_instances=100000
+  ```
+
+  If you're using Debian, you might need to add a symlink before you run `mdz server start`:
+
+  ```bash
+  ln -s /sbin/ldconfig /sbin/ldconfig.real
+  ```
 </Callout>
 
 If your service requires GPUs, you can add the `--gpu 1` flag to indicate how many GPUs you need. The deployment will be scheduled to a GPU node.
