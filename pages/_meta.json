@@ -3,6 +3,12 @@
   "deployment": "Manage Deployments",
   "server": "Manage Servers",
   "architecture": "Architecture",
+  "-- Use Cases": {
+    "type": "separator",
+    "title": "Use Cases"
+  },
+  "anycloud": "Deploy on Any Cloud (AWS, GCP, Azure, Lambda Labs, etc.)",
+  "anything": "Deploy and Autoscale Anything (vLLM, Gradio, etc.)",
   "-- FAQ": {
     "type": "separator",
     "title": "FAQ"

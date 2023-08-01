@@ -1,0 +1,43 @@
+# Autoscale the Deployment
+
+You could enable autoscaling for your deployment by setting the `--min-replicas` and `--max-replicas` flags when deploying your model.
+
+```text /--min-replicas 1 --max-replicas 3/
+$ mdz deploy --image modelzai/llm-blomdz-560m:23.06.13 --min-replicas 1 --max-replicas 3
+```
+
+## How it works
+
+The autoscaler will scale your deployment based on the number of requests it receives. It will scale up the deployment if the number of requests is higher than the threshold, and scale down the deployment if the number of requests is lower than the threshold.
+
+The requests will be load balanced between the replicas of your deployment.
+
+## Scale from zero
+
+You could set the `--min-replicas` flag to 0 to scale your deployment from zero.
+
+```text /--min-replicas 0/
+$ mdz deploy --image modelzai/llm-blomdz-560m:23.06.13 --min-replicas 0 --max-replicas 1
+```
+
+import { Callout } from 'nextra-theme-docs';
+
+The deployment will be scaled up when the first request is received. The deployment will be scaled down to 0 if there is no request for a while (default 10 minutes).
+
+<Callout emoji="💡">
+  The first request may take a while to be processed because the deployment needs to be scaled up. It depends on the size of your model and the image you're using.
+</Callout>
+
+## Configure the autoscaler
+
+The autoscaler scales the deployment horizontally between a minimum and maximum number of replicas, or to zero.
+
+You can configure the autoscaler to scale based on the number of concurrent requests. Configuration options are shown here:
+
+- `min-replicas`: Minimum number of replicas to scale to. Defaults to 1.
+- `max-replicas`: Maximum number of replicas to scale to. Defaults to 1.
+- `target-load`: Ideal number of concurrent requests per replica. Defaults to 10.
+- `scale-to-zero-duration`: Idle duration before scaling to zero. Defaults to 10 minutes.
+- `startup-duration`: Duration to wait for the deployment to start up. Defaults to 10 minutes.
+
+Currently `target-load`, `scale-to-zero-duration` and `startup-duration` are not configurable in `mdz` for the sake of simplicity.

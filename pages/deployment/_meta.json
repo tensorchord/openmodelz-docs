@@ -1,5 +1,6 @@
 {
     "deploy": "Create the First Deployment",
-    "inference": "Make Predictions"
+    "inference": "Make Predictions",
+    "autoscale": "Autoscale the Deployment"
 }
   

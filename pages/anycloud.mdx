@@ -1,0 +1,54 @@
+# Deploy on Any Cloud (AWS, GCP, Azure, Lambda Labs, etc.)
+
+It's super easy to deploy your models on any cloud. You could **start from a simple model, on a single machine, and scale it to a cluster of machines**.
+
+## Create a VM and start the `mdz` server
+
+After you have created a VM, you could download the `mdz` CLI with PyPI, and start the `mdz` server. You could provide the public IP to allow the `mdz` server to be accessible from the outside world.
+
+```text {6}
+$ pip install mdz
+$ mdz server start <public ip>
+...
+🎉 You could set the environment variable to get started!
+
+export MDZ_URL=http://1.2.3.4.modelz.live
+```
+
+## Deploy your model
+
+You could deploy your model by using the `mdz deploy` command. We will deploy a stable diffusion web UI as an example.
+
+```text
+$ mdz --debug deploy --image modelzai/gradio-stable-diffusion:23.03 --gpu 1 --port 7860
+$ mdz list
+ NAME  ENDPOINT                                                 STATUS  INVOCATIONS  REPLICAS 
+ llm   http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live   Ready           174  1/1      
+       http://146.235.213.84.modelz.live/inference/llm.default                                
+```
+
+After the deployment is `Ready`, you could access the endpoint URL to access the web UI. It is `http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live` in this example.
+
+![sd-webui](./images/sd.png)
+
+## Scale your deployment
+
+You could add more servers to support more traffic. First, you need to create a new VM on your cloud provider. Then, you could start the `mdz` server on the new VM and join it to the existing cluster.
+
+```text
+$ mdz server join <ip>
+$ mdz server list
+ NAME   PHASE  ALLOCATABLE      CAPACITY        
+ node1  Ready  cpu: 16          cpu: 16         
+               mem: 32784748Ki  mem: 32784748Ki 
+ node2  Ready  cpu: 16          cpu: 16         
+               mem: 32784748Ki  mem: 32784748Ki 
+```
+
+The IP address is the internal IP address of the previous VM. After the new VM is joined to the cluster, you could scale your deployment by using the `mdz scale` command.
+
+```text
+$ mdz scale llm --replicas 2
+```
+
+The requests will be load balanced between the replicas of your deployment. You already get a cluster of two machines to serve your model!

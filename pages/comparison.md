@@ -22,6 +22,8 @@ OpenModelZ does not require any code changes to your inference servers. You can 
 
 Besides this, you could also use [Gradio](https://www.gradio.app/) or [Streamlit](https://streamlit.io/) to create a web interface on OpenModelZ.
 
+And, OpenModelZ could **automatically scale your deployments based on the load, no matter what framework you use**.
+
 ## vs. AWS SageMaker
 
 AWS SageMaker is great, but complex. There are tens of concepts to learn and understand before you can deploy your model. 

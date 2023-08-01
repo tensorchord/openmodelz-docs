@@ -1,0 +1,25 @@
+# Deploy Anything (vLLM, TGI, Gradio, Streamlit, etc.)
+
+You could deploy anything with `mdz`. You could deploy a stable diffusion web UI, an inference API powered by TGI or vLLM, or a streamlit app, you name it.
+
+You do not need to change your code to deploy your model. All you need to do is to provide the Docker image and the port of your deployment. You could use the `mdz deploy` command to deploy your model.
+
+```text
+$ mdz --debug deploy --image modelzai/gradio-stable-diffusion:23.03 --gpu 1 --port 7860
+```
+
+## Autoscale your deployment
+
+`mdz` could **automatically scale your deployment no matter what you deploy**. You could use the `mdz scale` command to scale your deployment manually:
+
+```text
+$ mdz scale llm --replicas 2
+```
+
+You could also enable autoscaling for your deployment by setting the `--min-replicas` and `--max-replicas` flags when deploying your model.
+
+```text /--min-replicas 0 --max-replicas 1/
+$ mdz deploy --image modelzai/gradio-stable-diffusion:23.03 --min-replicas 0 --max-replicas 1
+```
+
+Please checkout the [autoscale](/deployment/autoscale) page for more details.

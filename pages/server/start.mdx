@@ -11,6 +11,25 @@ Hardware requirements scale based on the size of your deployments. Minimum recom
 - 2 vCPUs
 - 4 GB RAM
 
+## GPU support
+
+This requires the Nvidia Driver to be installed on the host machine before you run `mdz server start`. Check out the [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx) for more information.
+
+If you are using the GPU VM from cloud providers (e.g. AWS, GCP, Lambda Labs and so on), the driver should be installed already. **Thus you don't need to install anything.**
+
+For OS before Ubuntu 22.04, you might need to run the following command to make sure the GPU operator is working properly.
+
+```bash
+sysctl -w fs.inotify.max_user_watches=100000 
+sysctl -w fs.inotify.max_user_instances=100000
+```
+
+If you're using Debian, you might need to add a symlink before you run `mdz server start`:
+
+```bash
+ln -s /sbin/ldconfig /sbin/ldconfig.real
+```
+
 ## Start the server on Linux
 
 You could get the help message of the `mdz server start` command by running `mdz server start -h`.
@@ -56,10 +75,10 @@ Agent:
  Go Version:    go1.19.10
  Compiler:      gc
  Platform:      linux/amd64
-🐳 The server is running at http://1.2.3.4.nip.io
+🐳 The server is running at http://1.2.3.4.modelz.live
 🎉 You could set the environment variable to get started!
 
-export MDZ_URL=http://1.2.3.4.nip.io
+export MDZ_URL=http://1.2.3.4.modelz.live
 ```
 
 ## Start the server on macOS or Windows
@@ -92,6 +111,8 @@ You could label your servers to deploy your models to specific servers. For exam
 $ mdz server label node1 gpu=true type=nvidia-a100
 $ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80 --node-labels gpu=true,type=nvidia-a100
 ```
+
+If you have different type of GPUs, you can label your nodes with `mdz server label node3 gpu=true type=nvidia-a100` and deploy the serevice to the selected nodes with `mdz deploy --image llama2 --node-labels gpu=true,type=nvidia-a100`.
 
 ## Next steps
 

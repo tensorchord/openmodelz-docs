@@ -40,32 +40,14 @@ $ mdz list
 
 You could access the deployment by visiting the endpoint URL. It will be `http://simple-server-4k2epq5lynxbaayn.192.168.71.93.modelz.live` in this case. The endpoint could be accessed from the outside world as well if you've provided the public IP address of your server to the `mdz server start` command.
 
-## GPU support
-
-import { Callout } from 'nextra/components'
- 
-<Callout type="info" emoji="⚠️">
-  This requires the Nvidia Driver to be installed on the host machine before you run `mdz server start`. Check out the [Nvidia Driver Downloads](https://www.nvidia.com/Download/index.aspx) for more information.
-
-  If you are using the GPU VM from cloud providers, the driver should be installed already.
-
-  For OS before Ubuntu 22.04, you might need to run the following command to make sure the GPU operator is working properly.
-
-  ```bash
-  sysctl -w fs.inotify.max_user_watches=100000 
-  sysctl -w fs.inotify.max_user_instances=100000
-  ```
-
-  If you're using Debian, you might need to add a symlink before you run `mdz server start`:
-
-  ```bash
-  ln -s /sbin/ldconfig /sbin/ldconfig.real
-  ```
-</Callout>
-
 If your service requires GPUs, you can add the `--gpu 1` flag to indicate how many GPUs you need. The deployment will be scheduled to a GPU node.
 
-If you have different type of GPUs, you can label your nodes with `mdz server label node3 gpu=true type=nvidia-a100` and deploy the serevice to the selected nodes with `mdz deploy --image llama2 --node-labels gpu=true,type=nvidia-a100`.
+```text /--gpu 1/
+$ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80 --gpu 1
+Inference simple-server is created
+```
+
+Please checkout the [server](/server/start) page for more information about the `mdz server` command and GPU support.
 
 ## Scale your deployment
 
