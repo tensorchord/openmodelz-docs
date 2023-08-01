@@ -1,31 +1,23 @@
 # Create the First Deployment
 
-You could get the help message of the `mdz deploy` command by running `mdz deploy -h`.
+## Install `mdz`
 
+You can install OpenModelZ using the following command:
+
+```text copy
+pip install openmodelz
 ```
-Deploys a new deployment directly via flags.
 
-Usage:
-  mdz deploy [flags]
+You could verify the installation by running the following command:
 
-Examples:
-  mdz deploy --image=modelzai/llm-blomdz-560m:23.06.13
-  mdz deploy --image=modelzai/llm-blomdz-560m:23.06.13 --name blomdz-560m --node-labels gpu=true,name=node-name
-
-Flags:
-      --gpu int               Number of GPUs
-  -h, --help                  help for deploy
-      --image string          Image to deploy
-      --max-replicas int32    Maximum number of replicas (default 1)
-      --min-replicas int32    Minimum number of replicas (can be 0) (default 1)
-      --name string           Name of inference
-  -l, --node-labels strings   Node labels
-      --port int32            Port to deploy on (default 8080)
-
-Global Flags:
-      --debug        Enable debug logging
-  -u, --url string   URL to use for the server (MDZ_URL) (default http://localhost:80)
+```text copy
+mdz
 ```
+
+Once you've installed the `mdz` you can start deploying models and experimenting with them. There are only two concepts in `mdz`:
+
+- **Deployment**: A deployment is a running inference service. You could configure the number of replicas, the port, and the image, and some other parameters.
+- **Server**: A server is a machine that could run the deployments. It could be a cloud VM, a PC, or even a Raspberry Pi. You could start from a single server and scale it up to a cluster of machines without any hassle.
 
 You could deploy a model by running `mdz deploy --image <image>`. The deployment will be accessible from the outside world by default.
 
