@@ -25,12 +25,6 @@
     "title": "About"
   },
   "community": "Community & Support",
-  "home": {
-    "title": "GitHub ↗",
-    "type": "page",
-    "href": "https://github.com/tensorchord/openmodelz",
-    "newWindow": true
-  },
   "cloud": {
     "title": "Managed Service ↗",
     "type": "page",

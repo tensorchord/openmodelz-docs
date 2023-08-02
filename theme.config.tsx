@@ -18,6 +18,9 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://discord.gg/F4WnzqmeNj',
   },
+  project: {
+    link: 'https://github.com/tensorchord/openmodelz',
+  },
   docsRepositoryBase: 'https://github.com/tensorchord/openmodelz-docs/tree/main',
   useNextSeoProps() {
     const { asPath } = useRouter()
