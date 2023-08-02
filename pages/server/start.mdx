@@ -85,7 +85,7 @@ export MDZ_URL=http://1.2.3.4.modelz.live
 
 You need to create a linux VM first, with multipass for example.
 
-```bash
+```text {3}
 $ multipass launch
 $ multipass shell
 $ mdz server start
@@ -97,7 +97,8 @@ Please notice that [OrbStack](https://orbstack.dev/) and other Rosetta emulation
 
 You could check the status of the server by running `mdz server list`.
 
-```
+```text /server list/
+$ mdz server list
  NAME   PHASE  ALLOCATABLE      CAPACITY        
  node1  Ready  cpu: 16          cpu: 16         
                mem: 32784748Ki  mem: 32784748Ki 
@@ -107,7 +108,7 @@ You could check the status of the server by running `mdz server list`.
 
 You could label your servers to deploy your models to specific servers. For example, you could label your servers with `gpu=true` and deploy your models to servers with GPUs.
 
-```
+```text /gpu=true,type=nvidia-a100/
 $ mdz server label node1 gpu=true type=nvidia-a100
 $ mdz deploy --image aikain/simplehttpserver:0.1 --name simple-server --port 80 --node-labels gpu=true,type=nvidia-a100
 ```
