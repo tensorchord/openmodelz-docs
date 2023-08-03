@@ -81,6 +81,12 @@ Agent:
 export MDZ_URL=http://1.2.3.4.modelz.live
 ```
 
+You could also specify the registry mirror to speed up the image pulling process. Here is an example:
+
+```bash /--mirror-endpoints/
+$ mdz server start --mirror-endpoints https://docker.mirrors.sjtug.sjtu.edu.cn
+```
+
 ## Start the server on macOS or Windows
 
 You need to create a linux VM first, with multipass for example.

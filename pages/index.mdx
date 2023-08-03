@@ -67,6 +67,12 @@ The internal IP address will be used as the default endpoint of your deployments
 $ mdz server start 1.2.3.4
 ```
 
+You could also specify the registry mirror to speed up the image pulling process. Here is an example:
+
+```bash /--mirror-endpoints/
+$ mdz server start --mirror-endpoints https://docker.mirrors.sjtug.sjtu.edu.cn
+```
+
 ### Create your first UI-based deployment
 
 Once you've bootstrapped the `mdz` server, you can start deploying your first applications. We will use jupyter notebook as an example in this tutorial. You could use any docker image as your deployment.
