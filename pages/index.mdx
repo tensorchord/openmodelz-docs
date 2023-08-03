@@ -14,7 +14,9 @@ We created OpenModelZ in response to the difficulties of finding a simple, cost-
 
 With OpenModelZ, we take care of the underlying technical details for you, and provide a simple and easy-to-use CLI to deploy your models to **any cloud (GCP, AWS, or others), your home lab, or even a single machine**.
 
-You could **start from a single machine and scale it up to a cluster of machines** without any hassle. OpenModelZ lies at the heart of our [ModelZ](https://modelz.ai), which is a serverless inference platform. It's used in production to deploy models for our customers.
+You could **start from a single machine and scale it up to a cluster of machines** without any hassle. Besides this, We **provision a separate subdomain for each deployment** without any extra cost and effort, making each deployment easily accessible from the outside.
+
+OpenModelZ forms the core of our [ModelZ](https://modelz.ai) platform, which is a serverless machine learning inference service. It is utilized in a production environment to provision models for our clients.
 
 ## Quick Start 🚀
 
@@ -86,7 +88,9 @@ $ mdz list
           http://192.168.71.93/inference/jupyter.default                                                                         
 ```
 
-You could access the deployment by visiting the endpoint URL. It will be `http://jupyter-9pnxdkeb6jsfqkmq.192.168.71.93.modelz.live` in this case. The endpoint could be accessed from the outside world as well if you've provided the public IP address of your server to the `mdz server start` command. 
+You could access the deployment by visiting the endpoint URL. The endpoint will be automatically generated for each deployment with the following format: `<name>-<random-string>.<ip>.modelz.live`.
+
+It is `http://jupyter-9pnxdkeb6jsfqkmq.192.168.71.93.modelz.live` in this case. The endpoint could be accessed from the outside world as well if you've provided the public IP address of your server to the `mdz server start` command. 
 
 ![jupyter notebook](./images/jupyter.png)
 
@@ -115,7 +119,9 @@ You could scale your deployment by using the `mdz scale` command.
 $ mdz scale simple-server --replicas 3
 ```
 
-The requests will be load balanced between the replicas of your deployment.
+The requests will be load balanced between the replicas of your deployment. 
+
+You could also tell the `mdz` to **autoscale your deployment** based on the inflight requests. Please check out the [Autoscaling](/deployment/autoscale) section for more details.
 
 ### Debug your deployment
 
