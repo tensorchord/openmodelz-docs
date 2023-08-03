@@ -36,18 +36,6 @@ Once you've installed the `mdz` you can start deploying models and experimenting
 
 ### Bootstrap `mdz`
 
-import { Callout } from 'nextra/components'
-
-<Callout type="info" emoji="ℹ️">
-
-There're two types of nodes in the `mdz` cluster, `controller` and `worker`. 
-- The controller will manage the whole cluster and expose the service endpoint.
-- The workers will run the deployments and can be added or removed dynamically.
-
-By default the `controller` machine will also be a `worker` machine, thus one machine can form a single node cluster.
-
-</Callout>
-
 It's super easy to bootstrap the `mdz` server. You just need to find a server (could be a cloud VM, a home lab, or even a single machine) and run the `mdz server start` command. The `mdz` server will be bootstrapped on the server as a controller node and you could start deploying your models.
 
 ```
