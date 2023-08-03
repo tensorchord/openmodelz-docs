@@ -13,3 +13,15 @@ $ mdz server list
  node2  Ready  cpu: 16          cpu: 16         
                mem: 32784748Ki  mem: 32784748Ki 
 ```
+
+import { Callout } from 'nextra/components'
+
+<Callout type="info" emoji="ℹ️">
+
+There're two types of nodes in the `mdz` cluster, `controller` and `worker`. 
+- The controller will manage the whole cluster and expose the service endpoint.
+- The workers will run the deployments and can be added or removed dynamically.
+
+By default the `controller` machine will also be a `worker` machine, thus one machine can form a single node cluster. `mdz server start` will bootstrap a controller and worker. `mdz server join` will only bootstrap a worker and join it to the pre-existing cluster.
+
+</Callout>
