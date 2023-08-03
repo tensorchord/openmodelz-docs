@@ -33,3 +33,9 @@ Autoscaler is responsible for scaling the deployments. It will periodically pull
 Modelzetes is a Kubernetes operator that manages the deployments on Kubernetes runtime.
 
 Besides this, we will also have an ingress operator to provision endpoints for the deployments. It is not shown in the diagram.
+
+### Deployment endpoint
+
+The endpoint of a deployment is the URL that you could use to access the deployment. It is automatically generated for each deployment with the following format: `<name>-<random-string>.<ip>.modelz.live`.
+
+We host a DNS server to resolve the endpoint to the IP address of the server. Then we have a ingress controller (nginx) to route the requests to the corresponding deployment. The DNS server is also not shown in the diagram.

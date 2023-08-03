@@ -31,7 +31,9 @@ $ mdz list
           http://192.168.71.93/inference/jupyter.default                                                                         
 ```
 
-You could access the deployment by visiting the endpoint URL. It will be `http://jupyter-9pnxdkeb6jsfqkmq.192.168.71.93.modelz.live` in this case. The endpoint could be accessed from the outside world as well if you've provided the public IP address of your server to the `mdz server start` command. 
+You could access the deployment by visiting the endpoint URL. The endpoint will be automatically generated for each deployment with the following format: `<name>-<random-string>.<ip>.modelz.live`.
+
+It is `http://jupyter-9pnxdkeb6jsfqkmq.192.168.71.93.modelz.live` in this case. The endpoint could be accessed from the outside world as well if you've provided the public IP address of your server to the `mdz server start` command. 
 
 ![jupyter notebook](../images/jupyter.png)
 
@@ -69,7 +71,9 @@ You could scale your deployment by using the `mdz scale` command.
 $ mdz scale simple-server --replicas 3
 ```
 
-The requests will be load balanced between the replicas of your deployment.
+The requests will be load balanced between the replicas of your deployment. 
+
+You could also tell the `mdz` to **autoscale your deployment** based on the inflight requests. Please check out the [Autoscaling](/deployment/autoscale) section for more details.
 
 ## Debug your deployment
 
@@ -91,9 +95,10 @@ PID   USER     TIME   COMMAND
     7 root       0:00 /bin/sh -c python3 -m http.server 80
     8 root       0:00 python3 -m http.server 80
     9 root       0:00 ps
+```
+
+```text /exec/
 $ mdz exec simple-server -ti bash
-bash-4.4# uname -r
-5.19.0-46-generic
 bash-4.4# 
 ```
 
