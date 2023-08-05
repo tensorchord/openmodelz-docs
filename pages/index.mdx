@@ -192,11 +192,13 @@ $ mdz server list
                gpu: 1           gpu: 1      
 ```
 
-### Label your servers
+## Label your servers
 
 You could label your servers to deploy your models to specific servers. For example, you could label your servers with `gpu=true` and deploy your models to servers with GPUs.
 
-```text /--node-labels gpu=true,type=nvidia-a100/
-$ mdz server label node3 gpu=true type=nvidia-a100
-$ mdz deploy ... --node-labels gpu=true,type=nvidia-a100
+```text /gpu=true,type=nvidia-a100/
+$ mdz server label node1 gpu=true type=nvidia-a100
+$ mdz deploy --image modelzai/llm-bloomz-560m:23.07.4 --name simple-server --node-labels gpu=true,type=nvidia-a100
 ```
+
+If you have different type of GPUs, you can label your nodes with `mdz server label node3 gpu=true type=nvidia-a100` and deploy the serevice to the selected nodes with `mdz deploy --image llama2 --node-labels gpu=true,type=nvidia-a100`.
