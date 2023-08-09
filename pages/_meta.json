@@ -3,6 +3,11 @@
   "deployment": "Manage Deployments",
   "server": "Manage Servers",
   "architecture": "Architecture",
+  "-- Examples": {
+    "type": "separator",
+    "title": "Examples"
+  },
+  "stable-diffusion": "Stable Diffusion Web UI",
   "-- Use Cases": {
     "type": "separator",
     "title": "Use Cases"
