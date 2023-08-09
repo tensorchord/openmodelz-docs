@@ -1,0 +1,26 @@
+# Add Your Model
+
+## Add your model to the registry
+
+You could add your model to the registry by creating a pull request. Please follow the steps below:
+
+1. Fork this [documentation repository](https://github.com/tensorchord/openmodelz-docs)
+2. Create a new markdown file under [`pages/registry`](https://github.com/tensorchord/openmodelz-docs/tree/main/pages/registry) folder. The file name should be the same as your model name. For example, if your model name is `my-model`, then the file name should be `my-model.mdx`.
+3. Copy the following template to your markdown file and fill in the details:
+
+    ```markdown
+    ## Image Details
+
+    - Image name: 
+    - Repository: 
+    - Dockerfile: 
+
+    ## Deployment
+
+    ### `mdz`
+
+
+
+    #### How to use
+    ```
+4. Add one new bullet point to the [`registry.mdx`](https://github.com/tensorchord/openmodelz-docs/blob/main/pages/registry.mdx) file under `pages` folder. The bullet point should be the same as your model name. For example, if your model name is `my-model`, then the bullet point should be `- [My Model](./registry/my-model) - My Model Description`

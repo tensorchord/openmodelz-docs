@@ -1,0 +1,10 @@
+{
+    "stable-diffusion-webui": "Stable Diffusion Web UI",
+    "background-remover": "Background Remover",
+    "openai-bloomz-560m": "BloomZ 560M",
+    "openai-chatglm-6b-int4": "ChatGLM 6B INT4",
+    "openai-chatglm-6b": "ChatGLM 6B",
+    "openai-fastchat-t5-3b": "FastChat T5 3B",
+    "add-your-model": "Add Your Own Model"
+}
+  

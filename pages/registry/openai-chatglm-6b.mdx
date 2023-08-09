@@ -1,0 +1,43 @@
+# OpenAI API compatible ChatGLM 6B
+
+## Image Details
+
+- Image name: [`modelzai/llm-chatglm-6b`](https://hub.docker.com/repository/docker/modelzai/llm-chatglm-6b)
+- Repository: [tensorchord/modelz-llm](https://github.com/tensorchord/modelz-llm)
+- Dockerfile: [Dockerfile](https://github.com/tensorchord/modelz-llm/blob/main/images/bloomz-6b/Dockerfile)
+
+## Deployment
+
+### `mdz`
+
+You could deploy with the following command:
+
+```text
+$ mdz deploy --image modelzai/llm-chatglm-6b:23.07.4 --name llm
+Inference llm is created
+$ mdz list
+ NAME  ENDPOINT                                                 STATUS  INVOCATIONS  REPLICAS 
+ llm   http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live   Ready           174  1/1      
+       http://146.235.213.84.modelz.live/inference/llm.default                                
+```
+
+You could access the deployment by visiting the endpoint URL. The endpoint will be automatically generated for each deployment with the following format: `<name>-<random-string>.<ip>.modelz.live`.
+
+It is `http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live` in this case. The endpoint could be accessed from the outside world as well if you've provided the public IP address of your server to the `mdz server start` command.
+
+#### How to use
+
+You could use OpenAI python package to access the endpoint:
+
+```python
+import openai
+openai.api_base="http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live"
+openai.api_key="any"
+
+# create a chat completion
+chat_completion = openai.ChatCompletion.create(model="any", messages=[
+    {"role": "user", "content": "Who are you?"},
+    {"role": "assistant", "content": "I am a student"},
+    {"role": "user", "content": "What do you learn?"},
+], max_tokens=100)
+```

@@ -1,14 +1,16 @@
 # Stable Diffusion Web UI
 
-It's super easy to deploy stable diffusion web UI with `mdz`. You just first start the `mdz` server:
+## Image Details
 
-```bash
-$ mdz server start
-# If your server has the public IP address, you could specify it as an argument:
-$ mdz server start 1.2.3.4
-```
+- Image name: [`modelzai/gradio-stable-diffusion`](https://hub.docker.com/repository/docker/modelzai/gradio-stable-diffusion)
+- Repository: [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+- Dockerfile: [Dockerfile](https://github.com/camenduru/stable-diffusion-webui-docker/blob/main/Dockerfile.Lite)
 
-Then you could deploy the stable diffusion web UI with the following command:
+## Deployment
+
+### `mdz`
+
+You could deploy the stable diffusion web UI with the following command:
 
 ```text
 $ mdz deploy --image modelzai/gradio-stable-diffusion:23.03 --name sdw --port 7860 --gpu 1
