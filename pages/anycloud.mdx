@@ -20,14 +20,14 @@ export MDZ_URL=http://1.2.3.4.modelz.live
 You could deploy your model by using the `mdz deploy` command. We will deploy a stable diffusion web UI as an example.
 
 ```text
-$ mdz --debug deploy --image modelzai/gradio-stable-diffusion:23.03 --gpu 1 --port 7860
+$ mdz --debug deploy --image modelzai/gradio-stable-diffusion:23.03 --gpu 1 --port 7860 --name sdw
 $ mdz list
  NAME  ENDPOINT                                                 STATUS  INVOCATIONS  REPLICAS 
- llm   http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live   Ready           174  1/1      
-       http://146.235.213.84.modelz.live/inference/llm.default                                
+ sdw   http://sdw-qh2n0y28ybqc36oc.146.235.213.84.modelz.live   Ready           174  1/1      
+       http://146.235.213.84.modelz.live/inference/sdw.default                                
 ```
 
-After the deployment is `Ready`, you could access the endpoint URL to access the web UI. It is `http://llm-qh2n0y28ybqc36oc.146.235.213.84.modelz.live` in this example.
+After the deployment is `Ready`, you could access the endpoint URL to access the web UI. It is `http://sdw-qh2n0y28ybqc36oc.146.235.213.84.modelz.live` in this example.
 
 ![sd-webui](./images/sd.png)
 
@@ -48,7 +48,7 @@ $ mdz server list
 The IP address is the internal IP address of the previous VM. After the new VM is joined to the cluster, you could scale your deployment by using the `mdz scale` command.
 
 ```text
-$ mdz scale llm --replicas 2
+$ mdz scale sdw --replicas 2
 ```
 
 The requests will be load balanced between the replicas of your deployment. You already get a cluster of two machines to serve your model!
