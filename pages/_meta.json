@@ -20,7 +20,7 @@
     "type": "separator",
     "title": "Integration"
   },
-  "cli-reference": "CLI Reference",
+  "reference": "Reference",
   "-- About": {
     "type": "separator",
     "title": "About"
