@@ -29,3 +29,23 @@ And, OpenModelZ could **automatically scale your deployments based on the load, 
 AWS SageMaker is great, but complex. There are tens of concepts to learn and understand before you can deploy your model. 
 
 OpenModelZ is much simpler and easier to use. And it could manage different machines and clouds, not just AWS.
+
+## vs. SkyPilot
+
+Here's a breakdown of how the two platforms differ:
+
+OpenModelZ:
+
+- Autoscaling: OpenModelZ supports autoscaling, allowing your deployment to dynamically adjust the number of replicas based on the inflow of requests. This helps optimize resource allocation and ensures efficient handling of varying workloads.
+- Flexibility: Deployments on OpenModelZ can be dynamically scheduled on any machine, providing flexibility in resource allocation. In contrast, Skypilot requires a fixed set of machines and doesn't allow for changes to the application once it's deployed without recreating the cluster from scratch.
+- Cloud Native: OpenModelZ is a container-based solution, leveraging technologies like Docker to package applications into lightweight and portable containers. This approach enables easier deployment and management across different environments.
+- Traffic Management: OpenModelZ provides public endpoints for your deployments, allowing external access to your applications. This simplifies the process of serving API requests and enables interaction with your application from external systems.
+- Observability: OpenModelZ offers built-in observability features, with metrics of your deployments stored in Prometheus. You can visualize these metrics using tools like Grafana or the Prometheus dashboard. This includes metrics such as CPU, memory, GPU usage, as well as the number of requests and replicas.
+
+Skypilot:
+
+- Virtual Machines (VMs): Skypilot focuses on provisioning and managing VMs in a cloud environment. It provides a streamlined process for deploying and configuring VMs declaratively.
+- Setup Bash Scripts: Skypilot allows you to run setup bash scripts as part of the VM provisioning process, enabling you to customize the configuration of your VMs based on specific requirements.
+- Cloud Support: Skypilot is compatible with various cloud providers, allowing you to deploy and manage VMs across different cloud environments.
+
+When comparing OpenModelZ and Skypilot, consider factors such as autoscaling support, flexibility in resource allocation, containerization, traffic management options, and built-in observability features. These considerations will help determine which platform aligns better with your specific needs and use cases.
